@@ -43,7 +43,7 @@
             <th scope="row"> {{order.name}}</th>
             <th scope="row"> {{order.hours}}</th>
             <th scope="row"> {{order.quantity}}</th>
-            <th scope="row"> {{order.price}} $ </th>
+            <th scope="row"> {{order.prices}} $ </th>
         <th> <p v-if='order.isValidated=="0"'> <button class="waves-effect waves-light btn-small" @click="check(1,order.id_ord)">VALIDATE</button> <button class="waves-effect waves-light btn-small" @click="check(2,order.id_ord)">REJECT</button></p>
                 <p v-else-if='order.isValidated=="1"'> <i class="material-icons left">check</i> </p>
                 <p v-else> <i id="closeicon" class="material-icons left"> close</i></p></th>
