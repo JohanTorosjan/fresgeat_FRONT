@@ -23,8 +23,11 @@
       </ul>
     </div>
   </nav>
+  <div v-if='msg=="No Orders for the moment"' class="container">
+      <h2> {{msg}}</h2>
+  </div>
 
-    <div class="container">
+    <div v-else class="container">
 
     <table @mouseover="actualise()" > 
     <thead>
@@ -43,7 +46,7 @@
             <th scope="row"> {{order.name}}</th>
             <th scope="row"> {{order.hours}}</th>
             <th scope="row"> {{order.quantity}}</th>
-            <th scope="row"> {{order.price}} $ </th>
+            <th scope="row"> {{order.prices}} $ </th>
         <th> <p v-if='order.isValidated=="0"'> <button class="waves-effect waves-light btn-small" @click="check(1,order.id_ord)">VALIDATE</button> <button class="waves-effect waves-light btn-small" @click="check(2,order.id_ord)">REJECT</button></p>
                 <p v-else-if='order.isValidated=="1"'> <i class="material-icons left">check</i> </p>
                 <p v-else> <i id="closeicon" class="material-icons left"> close</i></p></th>
@@ -69,7 +72,8 @@ export default {
     data() {
         return {
             id_cook:"",
-            orders:[{}]
+            orders:[{}],
+            msg:"",
         }
         
     },
@@ -97,10 +101,11 @@ export default {
           .then(response=>{var datas=response.data;
           if(Array.isArray(datas)){
               console.log(datas)
-              this.orders=datas.reverse()
+              this.orders=datas.reverse();
+              this.msg="";
           } 
           })
-          .catch(error => alert(error))
+          .catch()
 
 
         }
@@ -115,10 +120,11 @@ export default {
           .then(response=>{var datas=response.data;
           if(Array.isArray(datas)){
               console.log(datas)
-              this.orders=datas.reverse()
+              this.orders=datas.reverse();
+              this.msg="";
           } 
           })
-          .catch(error => alert(error))
+          .catch(this.msg="No Orders for the moment")
 
     },
     
@@ -132,6 +138,7 @@ export default {
     src:url("../assets/fresheat.otf")   
 }
 h1{
+
   text-align: center;
   font-family:"fresheat";
 }
@@ -151,7 +158,9 @@ table{
   
 }
 
-
+h2{
+    color:aliceblue;
+}
 .container{
    margin-top: 3%;
    justify-content: center;

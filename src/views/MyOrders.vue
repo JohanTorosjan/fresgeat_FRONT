@@ -14,7 +14,10 @@
       
       </div>
     </nav>
-    <div v-if='msg==""'  class="container" id="display">
+    <div v-if='msg!=""' class="container" id="display">
+    <h1>{{msg}}</h1>
+    </div>
+    <div v-else class="container" id="display">
        
         <table >
               <thead>
@@ -43,8 +46,7 @@
   </tbody>
   </table>    
 </div>
-<div v-else class="container" id="display"></div>
-<h1>{{msg}}</h1>
+
     
 </div>
     
