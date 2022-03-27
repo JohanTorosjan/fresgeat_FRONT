@@ -126,7 +126,7 @@ export default {
             else{this.display=true}
         },
         deletereceipe(id_rec){
-            axios.delete(`http://localhost:8081/receipe/delete/${id_rec}`,
+            axios.delete(`https://fresheat-api.herokuapp.com/receipe/delete/${id_rec}`,
                         {
                  headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`},
             },
@@ -135,7 +135,7 @@ export default {
             .catch(err=>console.log(err))
         },
         actualise(){
-            axios.get(`http://localhost:8081/receipe/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
+            axios.get(`https://fresheat-api.herokuapp.com/receipe/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
         .then(res=>{
             console.log(res)
             if(res.data.message=="NO match"){this.error=true;}
@@ -151,7 +151,7 @@ export default {
     
     mounted(){
         this.id_cook=sessionStorage.getItem('id');
-         axios.get(`http://localhost:8081/receipe/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
+         axios.get(`https://fresheat-api.herokuapp.com/receipe/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
         .then(res=>{
             console.log(res)
             if(res.data.message=="NO match"){this.error=true;}

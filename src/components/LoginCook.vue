@@ -43,7 +43,7 @@ export default {
   methods:{
     submit(){
       var password=CryptoJS.AES.encrypt(this.formValues.password, "IShallNotPostAnyPasswordsInClear").toString()
-      axios.post("http://localhost:8081/login/cooker",{pseudo:this.formValues.pseudo,password:password})
+      axios.post("https://fresheat-api.herokuapp.com/login/cooker",{pseudo:this.formValues.pseudo,password:password})
       .then((result) =>{ 
       console.log(result);  
       sessionStorage.setItem("Token",result.data.token);

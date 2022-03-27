@@ -87,7 +87,7 @@ export default {
     },
     beforeMount(){
 
-      axios.get(`http://localhost:8081/receipe/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
+      axios.get(`https://fresheat-api.herokuapp.com/receipe/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
         .then(res=>{
             console.log(res)
             if(res.data.message=="NO match"){this.error=true;}

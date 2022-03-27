@@ -70,6 +70,7 @@
 </template>
 <script>
 import axios from 'axios'
+import router from '@/router'
 import SwitchButton from '../components/SwitchButton.vue'
 export default {
     name:'addReceipes',
@@ -88,7 +89,7 @@ export default {
     },
     methods:{
         submit(){
-             axios.put(`http://localhost:8081/receipe/add/${this.id_cook}`,
+             axios.put(`https://fresheat-api.herokuapp.com/receipe/add/${this.id_cook}`,
 
              {
             name:this.formValues.name,
@@ -105,6 +106,7 @@ export default {
             )
             .then(this.msg="Your receipe has been add ! ")
             .catch(error=>console.log(error))
+            router.push("/cookerHome");
         }
     },
 

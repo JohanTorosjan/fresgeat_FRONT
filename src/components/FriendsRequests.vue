@@ -50,13 +50,13 @@ export default {
     },
     methods:{
          actualise(){
-        axios.get(`http://localhost:8081/message/getbyid/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
+        axios.get(`https://fresheat-api.herokuapp.com/message/getbyid/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
         .then(res=>{console.log(res);this.FriendsRequests=res.data})
         .catch(err=>console.log(err))
 
     },
         acceptrequest(id_cust){
-            axios.put(`http://localhost:8081/demands/accept/${this.id_cook}`,
+            axios.put(`https://fresheat-api.herokuapp.com/demands/accept/${this.id_cook}`,
 
              {
             id_cust:id_cust
@@ -71,7 +71,7 @@ export default {
         
         },
         deleterequest(id_cust){
-            axios.delete(`http://localhost:8081/demands/reject`,
+            axios.delete(`https://fresheat-api.herokuapp.com/demands/reject`,
                         {
                  headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`},
             
@@ -88,7 +88,7 @@ export default {
             )
             .then(res=>console.log(res))
             .catch(err=>console.log(err))
-            axios.get(`http://localhost:8081/message/getbyid/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
+            axios.get(`https://fresheat-api.herokuapp.com/message/getbyid/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
             .then(res=>{console.log(res);this.FriendsRequests=res.data})
             .catch(err=>console.log(err))            
 
@@ -96,7 +96,7 @@ export default {
        
     },
     mounted(){
-        axios.get(`http://localhost:8081/message/getbyid/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
+        axios.get(`https://fresheat-api.herokuapp.com/message/getbyid/${this.id_cook}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
         .then(res=>{console.log(res);this.FriendsRequests=res.data})
         .catch(err=>console.log(err))
 

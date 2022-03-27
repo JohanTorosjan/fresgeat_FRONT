@@ -38,7 +38,7 @@ methods: {
   submit(){
     var password=CryptoJS.AES.encrypt(this.formValues.password, "IShallNotPostAnyPasswordsInClear").toString()
     console.log(password);
-    axios.post("http://localhost:8081/login/customer",{email_:this.formValues.email_,password:password})
+    axios.post("https://fresheat-api.herokuapp.com/login/customer",{email_:this.formValues.email_,password:password})
     .then((result) =>{ 
     console.log(result);  
     sessionStorage.setItem("Token",result.data.token);

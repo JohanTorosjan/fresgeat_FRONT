@@ -80,7 +80,7 @@ export default {
     methods:{
         check(yOn,id_ord){
 
-             axios.put(`http://localhost:8081/order/check/${id_ord}`,
+             axios.put(`https://fresheat-api.herokuapp.com/order/check/${id_ord}`,
 
              {
             yOn:yOn
@@ -97,7 +97,7 @@ export default {
 
         },
         actualise(){
-             axios.get(`http://localhost:8081/order/getbyid/cook/${sessionStorage.getItem('id')}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
+             axios.get(`https://fresheat-api.herokuapp.com/order/getbyid/cook/${sessionStorage.getItem('id')}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
           .then(response=>{var datas=response.data;
           if(Array.isArray(datas)){
               console.log(datas)
@@ -116,7 +116,7 @@ export default {
     
     mounted(){
         this.id_cook=sessionStorage.getItem('id');
-        axios.get(`http://localhost:8081/order/getbyid/cook/${sessionStorage.getItem('id')}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
+        axios.get(`https://fresheat-api.herokuapp.com/order/getbyid/cook/${sessionStorage.getItem('id')}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
           .then(response=>{var datas=response.data;
           if(Array.isArray(datas)){
               console.log(datas)

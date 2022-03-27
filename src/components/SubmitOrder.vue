@@ -65,7 +65,7 @@ export default {
             if(this.formValues.quantity==0 || this.formValues.hour==""){return 0}
             console.log(this.formValues.quantity)
             console.log(this.calculprice(this.formValues.quantity,this.price))
-            axios.post("http://localhost:8081/order/Create",{
+            axios.post("https://fresheat-api.herokuapp.com/order/Create",{
                 id_cook:this.id_cook,
                 quantity:this.formValues.quantity,
                 hours:this.formValues.hour,

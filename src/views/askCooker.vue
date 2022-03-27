@@ -52,7 +52,7 @@ export default {
     methods: {
     submit(){
             if(this.msg==""){alert("Please enter something...");return;}
-                axios.post("http://localhost:8081/message/post",
+                axios.post("https://fresheat-api.herokuapp.com/message/post",
                 {
                     id_cook:this.cookerid,
                     id_cust:sessionStorage.getItem('id'),

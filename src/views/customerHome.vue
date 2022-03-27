@@ -77,7 +77,7 @@ export default {
     methods:{
        
         submit(){
-            axios.get(`http://localhost:8081/cooker/getbypseudo/${this.searchedcooker.name}`,
+            axios.get(`https://fresheat-api.herokuapp.com/cooker/getbypseudo/${this.searchedcooker.name}`,
              { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
              .then(response => {this.msg=response.data.message;
              if (this.msg!="NO match"){sessionStorage.setItem("searchedcooker",response.data.pseudo);sessionStorage.setItem("idsearchedcooker",response.data.id_cook);router.push("/askCooker")}})

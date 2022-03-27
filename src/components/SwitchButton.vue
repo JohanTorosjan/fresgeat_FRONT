@@ -1,5 +1,5 @@
 <template>
-<div id="switch" @click="switchbutton" >
+<div id="switch" @mouseover="updatebutton" @click="switchbutton" >
      <a v-if="isOnline==1"  id="a-online" class="btn-floating pulse"><i id="i-online" class="material-icons left">gamepad</i> </a>
      <a v-else id="a-offline"  class="btn-floating pulse"><i id="i-offline" class="material-icons left">flight</i></a>
 <!--   
@@ -25,7 +25,7 @@ export default {
     },
     methods:{
         switchbutton(){
-            axios.put(`http://localhost:8081/statut/change/${this.id_cook}`,
+            axios.put(`https://fresheat-api.herokuapp.com/statut/change/${this.id_cook}`,
 
              {
             isonline:this.isOnline
@@ -46,7 +46,7 @@ export default {
         },
 
 
-        updatebutton(){axios.get(`http://localhost:8081/statut/${sessionStorage.getItem('id')})}`,
+        updatebutton(){axios.get(`https://fresheat-api.herokuapp.com/statut/${sessionStorage.getItem('id')})}`,
         { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`}})
         .then(res=>{
             this.isOnline=res.data.statut;
@@ -64,7 +64,7 @@ export default {
         
     },
     beforeMount(){
-        axios.get(`http://localhost:8081/statut/${sessionStorage.getItem('id')})}`,
+        axios.get(`https://fresheat-api.herokuapp.com/statut/${sessionStorage.getItem('id')})}`,
         { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`}})
         .then(res=>{
             this.isOnline=res.data.statut;

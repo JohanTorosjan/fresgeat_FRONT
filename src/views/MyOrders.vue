@@ -65,7 +65,7 @@ export default {
     },
     methods: {
         actualise(){
-           axios.get(`http://localhost:8081/order/getbyid/${sessionStorage.getItem('id')}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
+           axios.get(`https://fresheat-api.herokuapp.com/order/getbyid/${sessionStorage.getItem('id')}`, { headers: {"Authorization" : `Bearer ${sessionStorage.getItem('Token')}`} })
           .then(response=>{var datas=response.data;
           if(Array.isArray(datas)){
               this.orders=datas.reverse()
@@ -74,7 +74,7 @@ export default {
               this.msg="No orders for the moment";
           }
               })
-          .catch(error => alert(error))
+          .catch(error =>console.log(error))
 
         }
     },
@@ -88,7 +88,7 @@ export default {
               this.msg="No orders for the moment";
           }
               })
-          .catch(error => alert(error))
+          .catch(error=>console.log(error))
 
         }
     
